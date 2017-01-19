@@ -47,9 +47,8 @@ func (a *App) initializeRoutes() {
 }
 
 func (a *App) getProducts(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	count, _ := strconv.Atoi(vars["count"])
-	start, _ := strconv.Atoi(vars["start"])
+	count, _ := strconv.Atoi(r.FormValue("count"))
+	start, _ := strconv.Atoi(r.FormValue("start"))
 
 	if count > 10 || count < 1 {
 		count = 10
